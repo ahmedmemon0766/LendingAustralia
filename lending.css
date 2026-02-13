@@ -1,93 +1,190 @@
-:root{
-  --n:#283356;
-  --n2:#1f2845;
-  --t:#1DB3B6;
-  --s:#F5F7FB;
-  --l:rgba(40,51,86,.16);
-  --tx:#0f172a;
-}
-html,body{background:#fff;color:var(--tx);margin:0}
-a{color:var(--n);text-decoration:none}
-a:hover{color:var(--t)}
-.la-btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;border-radius:999px;font-weight:800;border:1px solid transparent}
-.la-btn--primary{background:var(--n);border-color:var(--n);color:#fff}
-.la-btn--primary:hover{background:var(--n2);border-color:var(--n2)}
-.la-btn--secondary{background:transparent;color:var(--t);border-color:rgba(29,179,182,.55)}
-.la-btn--secondary:hover{background:rgba(29,179,182,.10)}
-header,.site-header,.header,.header-wrap,.nav,.navbar{background:#fff!important}
-header,.site-header,.header,.header-wrap{border-bottom:1px solid var(--l)!important}
-header a,.site-header a,.nav a,.navbar a{color:var(--n)!important;font-weight:600}
-header a:hover,.site-header a:hover,.nav a:hover,.navbar a:hover{color:var(--t)!important}
-.la-header-cta{background:var(--n)!important;border:1px solid var(--n)!important;color:#fff!important;border-radius:999px!important;font-weight:900!important;padding:12px 16px!important}
-.la-header-cta:hover{background:var(--n2)!important;border-color:var(--n2)!important}
-.la-hero{position:relative!important;overflow:hidden!important}
-.la-hero::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(40,51,86,.45) 0%,rgba(15,23,42,.60) 70%,rgba(15,23,42,.75) 100%)}
-.la-hero>*{position:relative;z-index:2}
+<style>
 /* =========================
-   STEP 4 — SERVICES SECTION
+   Lending Australia — Global Theme (Entourage-style)
    ========================= */
-.la-services{padding:70px 0}
-.la-services__top{
-  display:flex;align-items:flex-end;justify-content:space-between;
-  gap:24px;margin-bottom:26px;
-}
-.la-services__title{margin:6px 0 10px;font-size:42px;line-height:1.1}
-.la-services__sub{margin:0;color:rgba(15,23,42,.75);max-width:58ch;font-size:16px;line-height:1.6}
-.la-services__cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
-
-.la-services__grid{
-  display:grid;
-  grid-template-columns:repeat(4, minmax(0,1fr));
-  gap:16px;
+:root{
+  --la-navy:#283356;
+  --la-navy2:#1f2845;
+  --la-teal:#1DB3B6;
+  --la-ink:#0f172a;
+  --la-soft:#F5F7FB;
+  --la-line:rgba(40,51,86,.16);
+  --la-shadow:0 12px 34px rgba(15,23,42,.08);
+  --la-radius:18px;
+  --la-wrap:1120px;
+  --la-logo-url:url("YOUR_LOGO_URL_HERE");
 }
 
-.la-serviceCard{
-  display:flex;gap:14px;align-items:flex-start;
-  padding:18px;
-  border-radius:18px;
-  background:#fff;
-  border:1px solid var(--l);
-  box-shadow:0 10px 30px rgba(15,23,42,.06);
-  transition:transform .15s ease, border-color .2s ease, box-shadow .2s ease;
+/* Base helpers */
+.la-wrap{width:min(var(--la-wrap), calc(100% - 40px)); margin:0 auto;}
+.la-soft{background:var(--la-soft);}
+.la-card{background:#fff;border:1px solid var(--la-line);border-radius:var(--la-radius);box-shadow:var(--la-shadow);}
+.la-kicker{color:var(--la-teal);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:12px;}
+.la-h1,.la-h2{color:var(--la-navy);letter-spacing:-.02em;margin:0;}
+.la-sub{color:rgba(15,23,42,.72);line-height:1.6;margin:0;}
+
+/* Buttons */
+.la-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 18px;border-radius:999px;font-weight:800;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:.2s ease;}
+.la-btn--primary{background:var(--la-navy);border-color:var(--la-navy);color:#fff;}
+.la-btn--primary:hover{background:var(--la-navy2);border-color:var(--la-navy2);}
+.la-btn--secondary{background:transparent;color:var(--la-teal);border-color:rgba(29,179,182,.55);}
+.la-btn--secondary:hover{background:rgba(29,179,182,.10);}
+
+/* Header CTA helper (add class to button if needed) */
+.la-header-cta{background:var(--la-navy)!important;border:1px solid var(--la-navy)!important;color:#fff!important;border-radius:999px!important;font-weight:900!important;}
+.la-header-cta:hover{background:var(--la-navy2)!important;border-color:var(--la-navy2)!important;}
+
+/* =========================
+   Entourage-style BLUE Loader
+   (JS will inject #laPreloader at runtime)
+   ========================= */
+#laPreloader{
+  position:fixed!important;inset:0!important;
+  width:100vw!important;height:100vh!important;
+  background:var(--la-navy)!important;
+  z-index:2147483647!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  opacity:1;transition:opacity .6s ease!important;
 }
-.la-serviceCard:hover{
-  transform:translateY(-2px);
-  border-color:rgba(29,179,182,.35);
-  box-shadow:0 14px 38px rgba(15,23,42,.10);
+#laPreloader .la-pre__inner{display:flex;flex-direction:column;align-items:center;gap:26px;}
+#laPreloader .la-pre__logo{
+  width:210px;height:70px;max-width:75vw;
+  background-image:var(--la-logo-url);
+  background-repeat:no-repeat;background-position:center;background-size:contain;
+  filter:brightness(1.08);
 }
-.la-serviceCard__icon{
-  width:44px;height:44px;display:grid;place-items:center;
-  border-radius:14px;
-  background:rgba(29,179,182,.10);
-  border:1px solid rgba(29,179,182,.22);
-  font-size:20px;
+#laPreloader .la-pre__line{
+  width:170px;height:3px;border-radius:99px;
+  background:var(--la-teal);
+  opacity:.9;
+  animation:laLine 1.4s ease-in-out infinite;
+  transform-origin:left;
 }
-.la-serviceCard__title{
-  margin:0 0 6px;
-  color:var(--n);
-  font-size:18px;
-  letter-spacing:-.01em;
-}
-.la-serviceCard__text{
-  margin:0 0 10px;
-  color:rgba(15,23,42,.72);
-  line-height:1.55;
-  font-size:14px;
-}
-.la-serviceCard__link{
-  color:var(--t);
-  font-weight:800;
-  font-size:13px;
-  letter-spacing:.02em;
+@keyframes laLine{
+  0%{transform:scaleX(.22);opacity:.45}
+  50%{transform:scaleX(1);opacity:1}
+  100%{transform:scaleX(.22);opacity:.45}
 }
 
+/* =========================
+   HERO polish (works even if overlay div missing)
+   Requires your hero wrapper to have class .la-hero
+   ========================= */
+.la-hero{position:relative;overflow:hidden;}
+.la-hero::before{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(40,51,86,.45) 0%,rgba(15,23,42,.60) 70%,rgba(15,23,42,.75) 100%);
+}
+.la-hero>*{position:relative;z-index:2;}
+
+/* Badge + bottom pills (if your markup uses these classes) */
+.la-hero__badge{
+  backdrop-filter:blur(8px);
+  background:rgba(40,51,86,.55)!important;
+  border:1px solid rgba(29,179,182,.35)!important;
+  color:#fff!important;
+}
+.la-hero__pill{
+  backdrop-filter:blur(10px);
+  background:rgba(15,23,42,.45)!important;
+  border:1px solid rgba(255,255,255,.18)!important;
+  color:#fff!important;
+  border-radius:18px!important;
+}
+
+/* =========================
+   Services (Entourage-style cards)
+   Use section class: .la-services
+   ========================= */
+.la-services{padding:70px 0;}
+.la-services__top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:26px;}
+.la-services__title{margin:6px 0 10px;font-size:42px;line-height:1.1;}
+.la-services__cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end;}
+.la-services__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;}
+.la-serviceCard{display:flex;gap:14px;align-items:flex-start;padding:18px;border-radius:var(--la-radius);background:#fff;border:1px solid var(--la-line);box-shadow:var(--la-shadow);transition:.2s ease;text-decoration:none;}
+.la-serviceCard:hover{transform:translateY(-2px);border-color:rgba(29,179,182,.35);box-shadow:0 16px 40px rgba(15,23,42,.10);}
+.la-serviceCard__icon{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;background:rgba(29,179,182,.10);border:1px solid rgba(29,179,182,.22);font-size:20px;}
+.la-serviceCard__title{margin:0 0 6px;color:var(--la-navy);font-size:18px;letter-spacing:-.01em;}
+.la-serviceCard__text{margin:0 0 10px;color:rgba(15,23,42,.72);line-height:1.55;font-size:14px;}
+.la-serviceCard__link{color:var(--la-teal);font-weight:800;font-size:13px;letter-spacing:.02em;}
+
+/* =========================
+   Why Choose + Form (conversion)
+   Use: .la-why
+   ========================= */
+.la-why{padding:70px 0;}
+.la-why__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:start;}
+.la-why__features{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
+.la-feature{padding:18px;border-radius:var(--la-radius);background:#fff;border:1px solid var(--la-line);box-shadow:var(--la-shadow);}
+.la-feature h3{margin:0 0 8px;color:var(--la-navy);font-size:16px;}
+.la-feature p{margin:0;color:rgba(15,23,42,.72);line-height:1.55;font-size:14px;}
+.la-form{padding:20px;border-radius:var(--la-radius);background:#fff;border:1px solid var(--la-line);box-shadow:var(--la-shadow);}
+.la-form label{display:block;font-weight:700;color:var(--la-navy);font-size:13px;margin:0 0 6px;}
+.la-form input,.la-form textarea,.la-form select{
+  width:100%;padding:12px 12px;border-radius:12px;
+  border:1px solid rgba(40,51,86,.18);outline:none;
+  background:#fff;font-size:14px;
+}
+.la-form input:focus,.la-form textarea:focus,.la-form select:focus{border-color:rgba(29,179,182,.55);box-shadow:0 0 0 4px rgba(29,179,182,.10);}
+.la-form textarea{min-height:120px;resize:vertical;}
+.la-form .la-btn{width:100%;margin-top:10px;}
+
+/* =========================
+   Testimonials (grid looks premium & safe in Builder)
+   Use: .la-testimonials
+   ========================= */
+.la-testimonials{padding:70px 0;}
+.la-tgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+.la-quote{padding:18px;border-radius:var(--la-radius);background:#fff;border:1px solid var(--la-line);box-shadow:var(--la-shadow);}
+.la-quote p{margin:0 0 14px;color:rgba(15,23,42,.78);line-height:1.65;}
+.la-quote strong{color:var(--la-navy);}
+
+/* =========================
+   Awards / Logos
+   Use: .la-awards
+   ========================= */
+.la-awards{padding:70px 0;}
+.la-logos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;align-items:center;}
+.la-logos img{max-width:100%;height:auto;opacity:.85;filter:grayscale(15%);}
+
+/* =========================
+   Final CTA background cleanup (prevents “blue merge”)
+   ========================= */
+.la-finalcta,.la-finalcta__inner,.la-finalcta__card{background:transparent!important;}
+
+/* Responsive */
 @media (max-width: 980px){
   .la-services__top{flex-direction:column;align-items:flex-start}
   .la-services__title{font-size:36px}
-  .la-services__grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .la-services__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .la-why__grid{grid-template-columns:1fr}
+  .la-tgrid{grid-template-columns:1fr}
+  .la-logos{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media (max-width: 560px){
   .la-services{padding:56px 0}
   .la-services__title{font-size:30px}
   .la-services__grid{grid-template-columns:1fr}
 }
+</style>
+
+<script>
+/* Loader inject + remove */
+(function(){
+  try{
+    // Create loader only once
+    if(document.getElementById('laPreloader')) return;
+    var el=document.createElement('div');
+    el.id='laPreloader';
+    el.innerHTML='<div class="la-pre__inner"><div class="la-pre__logo" aria-label="Lending Australia"></div><div class="la-pre__line"></div></div>';
+    document.body.appendChild(el);
+
+    window.addEventListener('load', function(){
+      setTimeout(function(){
+        el.style.opacity='0';
+        setTimeout(function(){ el.remove(); }, 700);
+      }, 350);
+    }, {once:true});
+  }catch(e){}
+})();
+</script>
