@@ -23,3 +23,71 @@ header a:hover,.site-header a:hover,.nav a:hover,.navbar a:hover{color:var(--t)!
 .la-hero{position:relative!important;overflow:hidden!important}
 .la-hero::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(40,51,86,.45) 0%,rgba(15,23,42,.60) 70%,rgba(15,23,42,.75) 100%)}
 .la-hero>*{position:relative;z-index:2}
+/* =========================
+   STEP 4 — SERVICES SECTION
+   ========================= */
+.la-services{padding:70px 0}
+.la-services__top{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:24px;margin-bottom:26px;
+}
+.la-services__title{margin:6px 0 10px;font-size:42px;line-height:1.1}
+.la-services__sub{margin:0;color:rgba(15,23,42,.75);max-width:58ch;font-size:16px;line-height:1.6}
+.la-services__cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+
+.la-services__grid{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  gap:16px;
+}
+
+.la-serviceCard{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:18px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid var(--l);
+  box-shadow:0 10px 30px rgba(15,23,42,.06);
+  transition:transform .15s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.la-serviceCard:hover{
+  transform:translateY(-2px);
+  border-color:rgba(29,179,182,.35);
+  box-shadow:0 14px 38px rgba(15,23,42,.10);
+}
+.la-serviceCard__icon{
+  width:44px;height:44px;display:grid;place-items:center;
+  border-radius:14px;
+  background:rgba(29,179,182,.10);
+  border:1px solid rgba(29,179,182,.22);
+  font-size:20px;
+}
+.la-serviceCard__title{
+  margin:0 0 6px;
+  color:var(--n);
+  font-size:18px;
+  letter-spacing:-.01em;
+}
+.la-serviceCard__text{
+  margin:0 0 10px;
+  color:rgba(15,23,42,.72);
+  line-height:1.55;
+  font-size:14px;
+}
+.la-serviceCard__link{
+  color:var(--t);
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:.02em;
+}
+
+@media (max-width: 980px){
+  .la-services__top{flex-direction:column;align-items:flex-start}
+  .la-services__title{font-size:36px}
+  .la-services__grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 560px){
+  .la-services{padding:56px 0}
+  .la-services__title{font-size:30px}
+  .la-services__grid{grid-template-columns:1fr}
+}
