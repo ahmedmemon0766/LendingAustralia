@@ -1,0 +1,42 @@
+:root{
+  --n:#283356;
+  --n2:#1f2845;
+  --t:#1DB3B6;
+  --s:#F5F7FB;
+  --l:rgba(40,51,86,.16);
+  --tx:#0f172a;
+}
+
+/* Base */
+html,body{background:#fff;color:var(--tx);margin:0}
+a{color:var(--n);text-decoration:none}
+a:hover{color:var(--t)}
+
+/* Buttons */
+.la-btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;border-radius:999px;font-weight:800;border:1px solid transparent}
+.la-btn--primary{background:var(--n);border-color:var(--n);color:#fff}
+.la-btn--primary:hover{background:var(--n2);border-color:var(--n2)}
+.la-btn--secondary{background:transparent;color:var(--t);border-color:rgba(29,179,182,.55)}
+.la-btn--secondary:hover{background:rgba(29,179,182,.10)}
+
+/* Header */
+header,.site-header,.header,.header-wrap,.nav,.navbar{background:#fff!important}
+header,.site-header,.header,.header-wrap{border-bottom:1px solid var(--l)!important}
+header a,.site-header a,.nav a,.navbar a{color:var(--n)!important;font-weight:600}
+header a:hover,.site-header a:hover,.nav a:hover,.navbar a:hover{color:var(--t)!important}
+
+/* Header CTA */
+.la-header-cta{background:var(--n)!important;border:1px solid var(--n)!important;color:#fff!important;border-radius:999px!important;font-weight:900!important;padding:12px 16px!important}
+.la-header-cta:hover{background:var(--n2)!important;border-color:var(--n2)!important}
+
+/* Hero overlay */
+.la-hero{position:relative!important;overflow:hidden!important}
+.la-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  background:linear-gradient(180deg,rgba(40,51,86,.45) 0%,rgba(15,23,42,.60) 70%,rgba(15,23,42,.75) 100%)
+}
+.la-hero>*{position:relative;z-index:2}
